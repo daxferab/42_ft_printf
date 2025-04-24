@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printuns.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daxferab <daxferna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:50:08 by daxferab          #+#    #+#             */
-/*   Updated: 2024/04/03 21:51:17 by daxferab         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:42:41 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 int	ft_putuns(unsigned int num, int bytes)
 {

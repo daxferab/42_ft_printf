@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printptr.c                                      :+:      :+:    :+:   */
+/*   ft_printnbr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daxferab <daxferna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 02:14:27 by daxferab          #+#    #+#             */
-/*   Updated: 2024/05/24 17:33:34 by daxferab         ###   ########.fr       */
+/*   Created: 2024/03/20 17:14:04 by daxferab          #+#    #+#             */
+/*   Updated: 2025/04/24 16:42:30 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
-int	ft_printptr(size_t ptr)
+static int	ft_numlen(int n)
 {
-	int	bytes;
+	int	i;
 
-	bytes = 0;
-	if (ptr == 0)
-		return (write(1, "(nil)", 5));
-	bytes += write(1, "0x", 2);
-	bytes += ft_printhex(ptr, "0123456789abcdef");
-	return (bytes);
+	i = 0;
+	if (n <= 0)
+		++i;
+	while (n && ++i)
+		n /= 10;
+	return (i);
+}
+
+int	ft_printnbr(int num)
+{
+	ft_putnbr_fd(num, 1);
+	return (ft_numlen(num));
 }

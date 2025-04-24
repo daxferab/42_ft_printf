@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_printhex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daxferab <daxferna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 17:07:28 by daxferab          #+#    #+#             */
-/*   Updated: 2024/03/27 14:23:06 by daxferab         ###   ########.fr       */
+/*   Created: 2024/03/18 01:53:48 by daxferab          #+#    #+#             */
+/*   Updated: 2025/04/24 16:42:25 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
-int	ft_printstr(char *c)
+int	ft_printhex(size_t num, char *hex_list)
 {
-	if (!c)
-		return (write(1, "(null)", 6));
-	return (write(1, c, ft_strlen(c)));
+	int	bytes;
+
+	bytes = 0;
+	if (num >= 16)
+		bytes += ft_printhex(num / 16, hex_list);
+	bytes += ft_printchar(hex_list[num % 16]);
+	return (bytes);
 }

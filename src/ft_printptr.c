@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printchar.c                                     :+:      :+:    :+:   */
+/*   ft_printptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daxferab <daxferna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 17:03:22 by daxferab          #+#    #+#             */
-/*   Updated: 2024/03/22 19:11:39 by daxferab         ###   ########.fr       */
+/*   Created: 2024/03/18 02:14:27 by daxferab          #+#    #+#             */
+/*   Updated: 2025/04/24 16:42:33 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
-int	ft_printchar(int c)
+int	ft_printptr(size_t ptr)
 {
-	return (write(1, &c, 1));
+	int	bytes;
+
+	bytes = 0;
+	if (ptr == 0)
+		return (write(1, "(nil)", 5));
+	bytes += write(1, "0x", 2);
+	bytes += ft_printhex(ptr, "0123456789abcdef");
+	return (bytes);
 }
