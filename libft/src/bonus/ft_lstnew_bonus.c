@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printuns.c                                      :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 02:50:08 by daxferab          #+#    #+#             */
-/*   Updated: 2025/04/24 16:44:50 by daxferna         ###   ########.fr       */
+/*   Created: 2024/02/24 20:21:37 by dxfrxg            #+#    #+#             */
+/*   Updated: 2025/03/22 18:54:34 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
-int	ft_putuns(unsigned int num, int bytes)
+t_list	*ft_lstnew(void *content)
 {
-	char	digit;
+	t_list	*node;
 
-	if (num < 10)
-	{
-		digit = num + '0';
-		bytes += write(1, &digit, 1);
-	}
-	else
-	{
-		bytes = ft_putuns(num / 10, bytes);
-		digit = num % 10 + '0';
-		bytes += write(1, &digit, 1);
-	}
-	return (bytes);
-}
-
-int	ft_printuns(int num)
-{
-	int	bytes;
-
-	bytes = 0;
-	return (ft_putuns(num, bytes));
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
+		return (0);
+	node->content = content;
+	node->next = 0;
+	return (node);
 }

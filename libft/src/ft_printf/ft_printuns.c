@@ -6,11 +6,11 @@
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:50:08 by daxferab          #+#    #+#             */
-/*   Updated: 2025/04/24 16:44:50 by daxferna         ###   ########.fr       */
+/*   Updated: 2025/03/22 18:55:56 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
 int	ft_putuns(unsigned int num, int bytes)
 {

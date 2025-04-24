@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printuns.c                                      :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 02:50:08 by daxferab          #+#    #+#             */
-/*   Updated: 2025/04/24 16:44:50 by daxferna         ###   ########.fr       */
+/*   Created: 2024/01/31 03:14:33 by daxferna          #+#    #+#             */
+/*   Updated: 2025/03/22 18:55:56 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
-int	ft_putuns(unsigned int num, int bytes)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	digit;
+	char	*p;
+	size_t	i;
+	size_t	slen;
 
-	if (num < 10)
-	{
-		digit = num + '0';
-		bytes += write(1, &digit, 1);
-	}
+	i = 0;
+	slen = ft_strlen(s);
+	if (start >= (unsigned int)slen)
+		return (ft_calloc(1, sizeof(char)));
+	if (slen - start + 1 > len)
+		p = malloc(len + 1);
 	else
+		p = malloc(slen - start + 1);
+	if (p == 0)
+		return (0);
+	while (i < len && s[start + i] != 0)
 	{
-		bytes = ft_putuns(num / 10, bytes);
-		digit = num % 10 + '0';
-		bytes += write(1, &digit, 1);
+		p[i] = s[start + i];
+		i++;
 	}
-	return (bytes);
-}
-
-int	ft_printuns(int num)
-{
-	int	bytes;
-
-	bytes = 0;
-	return (ft_putuns(num, bytes));
+	p[i] = 0;
+	return (p);
 }

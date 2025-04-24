@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printuns.c                                      :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 02:50:08 by daxferab          #+#    #+#             */
-/*   Updated: 2025/04/24 16:44:50 by daxferna         ###   ########.fr       */
+/*   Created: 2024/02/04 19:01:46 by daxferna          #+#    #+#             */
+/*   Updated: 2025/03/22 18:55:56 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
-int	ft_putuns(unsigned int num, int bytes)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	digit;
+	char	*p;
+	int		i;
 
-	if (num < 10)
+	p = malloc(ft_strlen(s) * sizeof(char) + 1);
+	if (!p)
+		return (0);
+	i = 0;
+	while (s[i] != 0)
 	{
-		digit = num + '0';
-		bytes += write(1, &digit, 1);
+		p[i] = f(i, s[i]);
+		i++;
 	}
-	else
-	{
-		bytes = ft_putuns(num / 10, bytes);
-		digit = num % 10 + '0';
-		bytes += write(1, &digit, 1);
-	}
-	return (bytes);
-}
-
-int	ft_printuns(int num)
-{
-	int	bytes;
-
-	bytes = 0;
-	return (ft_putuns(num, bytes));
+	p[i] = 0;
+	return (p);
 }

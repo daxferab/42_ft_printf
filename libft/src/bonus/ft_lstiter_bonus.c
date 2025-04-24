@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printuns.c                                      :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 02:50:08 by daxferab          #+#    #+#             */
-/*   Updated: 2025/04/24 16:44:50 by daxferna         ###   ########.fr       */
+/*   Created: 2024/02/29 18:00:13 by daxferna          #+#    #+#             */
+/*   Updated: 2025/03/22 18:54:22 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "libft.h"
 
-int	ft_putuns(unsigned int num, int bytes)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	char	digit;
-
-	if (num < 10)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		digit = num + '0';
-		bytes += write(1, &digit, 1);
+		f(lst->content);
+		lst = lst->next;
 	}
-	else
-	{
-		bytes = ft_putuns(num / 10, bytes);
-		digit = num % 10 + '0';
-		bytes += write(1, &digit, 1);
-	}
-	return (bytes);
-}
-
-int	ft_printuns(int num)
-{
-	int	bytes;
-
-	bytes = 0;
-	return (ft_putuns(num, bytes));
 }
