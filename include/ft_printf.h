@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daxferab <daxferna@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daxferna <daxferna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 03:57:16 by daxferab          #+#    #+#             */
-/*   Updated: 2024/05/24 13:50:09 by daxferab         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:41:29 by daxferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include <stdint.h>
-# include "libft/libft.h"
+# include "../libft/include/libft.h"
 
 int	ft_printf(char const *str, ...);
 int	ft_printchar(int c);
